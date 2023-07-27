@@ -1,0 +1,8 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1690490771
+body_mesh.tscn::PackedScene::8446604196915718848::1690490753::0::1::::<><>::
+icon.svg::CompressedTexture2D::532358721721927204::1690482542::1690482545::1::::<><>::
+massive_body.gd::GDScript::-1::1690490753::0::1::::MassiveObject<>Node2D<>::
+massive_object.tscn::PackedScene::5972721913661773082::1690490771::0::1::::<><>::res://massive_body.gd
+universe.gd::GDScript::-1::1690483282::0::1::::<>Node2D<>::
+universe.tscn::PackedScene::4249130733045977531::1690483809::0::1::::<><>::res://universe.gd

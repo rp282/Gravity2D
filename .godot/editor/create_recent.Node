@@ -1,0 +1,8 @@
+ColorRect
+TextureRect
+Label
+Node
+TileMap
+Sprite2D
+Polygon2D
+MeshInstance2D

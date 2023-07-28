@@ -1,9 +1,13 @@
+class_name God
 extends Node
+
+enum BodyTypes { elastic, mergeable }
+
 
 @export var universe : PackedScene
 var current_universe : Universe
 #var current_gravity : int = randi_range(0,100)
-var current_gravity : float = 160
+var current_gravity : float = 1200
 var large_bodies = 0
 var small_bodies = 10
 

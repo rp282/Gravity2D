@@ -17,6 +17,8 @@ var wall_cushion_factor : float = 1 ## amount walls decelerate bodies on impact
 
 var velocity = Vector2.ZERO
 
+var total_mass : float = 0
+
 func _ready():
     print(gravity)
     ## Large body
@@ -27,6 +29,7 @@ func _ready():
         body.initialize(self, randi() % God.BodyTypes.size(), random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
 #        var body = MassiveBody.new(generated_mass, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
 #        massive_objects.push_back(body)
+        total_mass += body.mass
         add_child(body)
     ## Small bodies
     for i in small_bodies:
@@ -36,6 +39,7 @@ func _ready():
         body.initialize(self, randi() % God.BodyTypes.size(), random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
 #        var body = MassiveBody.new(generated_mass, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
 #        massive_objects.push_back(body)
+        total_mass += body.mass
         add_child(body)
 
 #func _process(delta):

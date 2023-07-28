@@ -22,7 +22,7 @@ func _ready():
     $InputLargeBodies.set_text(str(large_bodies))
     $InputSmallBodies.set_text(str(small_bodies))
     $InputG.set_text(str(current_gravity))
-    
+    $TotalMass.set_text("Total Mass: %d" % current_universe.total_mass)
     $Background.size.x = ProjectSettings.get_setting("display/window/size/viewport_width")
     $Background.size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
 
@@ -38,6 +38,7 @@ func _input(event: InputEvent):
         current_universe.large_bodies = large_bodies
         current_universe.small_bodies = small_bodies
         add_child(current_universe)
+        $TotalMass.set_text("Total Mass: %d" % current_universe.total_mass)
 
 
 func _on_input_large_bodies_text_changed(new_text):

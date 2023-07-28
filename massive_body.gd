@@ -26,12 +26,23 @@ func _process(delta):
     var acceleration = net_force / mass
     velocity += acceleration * delta
     
+    # Check for collisions
+    for other_body in get_tree().get_nodes_in_group("bodies"):
+        if other_body == self:
+            continue
+        if position.distance_to(other_body.position) < radius + other_body.radius:
+            # Colliding adjust velocities
+            var new_velocities = calculate_resulting_collision_velocities(self, other_body)
+            velocity = new_velocities[0]
+            other_body.velocity = new_velocities[1]
+            
+    
     var new_position = position + (velocity * delta)
     ## Bounce off walls
     if new_position.x + radius > universe.x_max || new_position.x - radius < 0:
-        velocity.x = -velocity.x
+        velocity.x = -velocity.x * universe.wall_cushion_factor
     if new_position.y + radius > universe.y_max || new_position.y - radius < 0:
-        velocity.y = -velocity.y
+        velocity.y = -velocity.y * universe.wall_cushion_factor
     position = new_position
     queue_redraw()
 
@@ -64,3 +75,10 @@ func initialize(u: Universe, m: float, pos: Vector2, c: Color, v: Vector2 = Vect
         position.y -= (position.y - radius) - universe.y_min
     color = c
     velocity = v
+    
+func calculate_resulting_collision_velocities(body: MassiveBody, other_body: MassiveBody):
+    var body_new_velocity : Vector2
+    var other_body_new_velocity : Vector2
+    body_new_velocity = (body.mass - other_body.mass) * (body.velocity) / (body.mass + other_body.mass) + (2 * other_body.mass) * (other_body.velocity) / (body.mass + other_body.mass)
+    other_body_new_velocity = body.velocity + body_new_velocity - other_body.velocity
+    return [body_new_velocity, other_body_new_velocity]

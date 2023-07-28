@@ -2,9 +2,10 @@ extends Node
 
 @export var universe : PackedScene
 var current_universe : Universe
-var current_gravity : int = randi_range(0,100)
-var large_bodies = 1
-var small_bodies = 15
+#var current_gravity : int = randi_range(0,100)
+var current_gravity : int = 500
+var large_bodies = 0
+var small_bodies = 10
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func _input(event: InputEvent):
     if event.is_action_pressed("reset"):
         current_universe.queue_free()
         current_universe = universe.instantiate()
-        current_gravity = randi_range(0,100)
+        #var current_gravity : int = randi_range(0,100)
         current_universe.large_bodies = large_bodies
         current_universe.small_bodies = small_bodies
         add_child(current_universe)

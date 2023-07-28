@@ -1,9 +1,6 @@
 res://massive_body.tscn
-res://massive_body.gd
 res://universe.tscn
 res://god.tscn
+res://massive_body.gd
 res://universe.gd
-res://ColorRect.gd
 res://god.gd
-res://fps.gd
-res://Gravitational Constant.gd

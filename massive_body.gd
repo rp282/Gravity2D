@@ -10,6 +10,7 @@ var mesh : MeshInstance2D
 var type : God.BodyTypes
 var velocity : Vector2
 var universe : Universe
+var health = 5 
 
 func _ready():
     add_to_group("bodies")
@@ -34,6 +35,14 @@ func _process(delta):
         if new_position.distance_to(other_body.position) < radius + other_body.radius: # Collision detected
             # if one of bodies is collider type
             if type == God.BodyTypes.elastic || other_body.type == God.BodyTypes.elastic:
+                if type == God.BodyTypes.elastic:
+                    health -= 1
+                    if health <= 0:
+                        type = God.BodyTypes.mergeable
+                if other_body.type == God.BodyTypes.elastic:
+                    other_body.health -= 1
+                    if other_body.health <= 0:
+                        other_body.type = God.BodyTypes.mergeable
                 # Colliding adjust velocities
                 var new_velocities = calculate_resulting_collision_velocities(self, other_body)
                 velocity = new_velocities[0]
@@ -76,7 +85,7 @@ func _draw():
     draw_circle(Vector2(0,0), radius, color)
     match type:
         God.BodyTypes.elastic:
-            draw_circle(Vector2(0,0), max(2, radius - 10), color.lightened(0.4))
+            draw_circle(Vector2(0,0), max(2, radius - 10), color.lightened(health * 0.1))
         God.BodyTypes.mergeable:
             draw_circle(Vector2(0,0), max(2, radius - 10), color.darkened(0.4))
 

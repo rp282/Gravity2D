@@ -1,9 +1,0 @@
-Label
-LineEdit
-ColorRect
-TextureRect
-Node
-TileMap
-Sprite2D
-Polygon2D
-MeshInstance2D

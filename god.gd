@@ -23,8 +23,8 @@ func _ready():
     $InputSmallBodies.set_text(str(small_bodies))
     $InputG.set_text(str(current_gravity))
     $TotalMass.set_text("Total Mass: %d" % current_universe.total_mass)
-    $Background.size.x = ProjectSettings.get_setting("display/window/size/viewport_width")
-    $Background.size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
+#    $Background.size.x = ProjectSettings.get_setting("display/window/size/viewport_width")
+#    $Background.size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
 
 func _process(delta: float) -> void:
     $FPS.set_text("FPS %d" % Engine.get_frames_per_second())

@@ -63,10 +63,10 @@ func _process(delta):
                     return
     new_position = position + (velocity * delta)
     ## Bounce off walls
-    if new_position.x + radius > universe.x_max || new_position.x - radius < 0:
-        velocity.x = -velocity.x * universe.wall_cushion_factor
-    if new_position.y + radius > universe.y_max || new_position.y - radius < 0:
-        velocity.y = -velocity.y * universe.wall_cushion_factor
+#    if new_position.x + radius > universe.x_max || new_position.x - radius < 0:
+#        velocity.x = -velocity.x * universe.wall_cushion_factor
+#    if new_position.y + radius > universe.y_max || new_position.y - radius < 0:
+#        velocity.y = -velocity.y * universe.wall_cushion_factor
     position = new_position
     queue_redraw()
 

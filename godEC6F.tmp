@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://eeiv6rah78cb"]
+[gd_scene load_steps=6 format=3 uid="uid://eeiv6rah78cb"]
 
 [ext_resource type="Script" path="res://god.gd" id="1_nvt8k"]
 [ext_resource type="PackedScene" uid="uid://b1sktedj6x7yd" path="res://universe.tscn" id="2_xmtj1"]
 [ext_resource type="Script" path="res://fps.gd" id="3_8mst5"]
 [ext_resource type="Script" path="res://ColorRect.gd" id="4_3mt18"]
+[ext_resource type="Script" path="res://Gravitational Constant.gd" id="4_50a7k"]
 
 [node name="god" type="Node"]
 script = ExtResource("1_nvt8k")
 universe = ExtResource("2_xmtj1")
+
+[node name="Gravitational Constant" type="Label" parent="."]
+z_index = 1
+offset_left = 32.0
+offset_top = 48.0
+offset_right = 72.0
+offset_bottom = 71.0
+script = ExtResource("4_50a7k")
 
 [node name="FPS" type="Label" parent="."]
 z_index = 1
@@ -32,20 +41,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 script = ExtResource("4_3mt18")
-
-[node name="InputG" type="LineEdit" parent="."]
-offset_left = 52.0
-offset_top = 41.0
-offset_right = 119.063
-offset_bottom = 72.0
-
-[node name="Label" type="Label" parent="InputG"]
-layout_mode = 0
-offset_left = -20.0
-offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 28.0
-text = "G"
 
 [node name="InputLargeBodies" type="LineEdit" parent="."]
 z_index = 1
@@ -77,6 +72,5 @@ offset_right = -13.0
 offset_bottom = 26.0
 text = "Small Bodies"
 
-[connection signal="text_changed" from="InputG" to="." method="_on_input_g_text_changed"]
 [connection signal="text_changed" from="InputLargeBodies" to="." method="_on_input_large_bodies_text_changed"]
 [connection signal="text_changed" from="InputSmallBodies" to="." method="_on_input_small_bodies_text_changed"]

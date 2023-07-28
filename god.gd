@@ -3,8 +3,8 @@ extends Node
 @export var universe : PackedScene
 var current_universe : Universe
 #var current_gravity : int = randi_range(0,100)
-var current_gravity : float = 120
-var large_bodies = 1
+var current_gravity : float = 160
+var large_bodies = 0
 var small_bodies = 10
 
 
@@ -18,7 +18,12 @@ func _ready():
     $InputLargeBodies.set_text(str(large_bodies))
     $InputSmallBodies.set_text(str(small_bodies))
     $InputG.set_text(str(current_gravity))
-    pass # Replace with function body.
+    
+    $Background.size.x = ProjectSettings.get_setting("display/window/size/viewport_width")
+    $Background.size.y = ProjectSettings.get_setting("display/window/size/viewport_height")
+
+func _process(delta: float) -> void:
+    $FPS.set_text("FPS %d" % Engine.get_frames_per_second())
 
 
 func _input(event: InputEvent):

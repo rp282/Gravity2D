@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://eeiv6rah78cb"]
+[gd_scene load_steps=3 format=3 uid="uid://eeiv6rah78cb"]
 
 [ext_resource type="Script" path="res://god.gd" id="1_nvt8k"]
 [ext_resource type="PackedScene" uid="uid://b1sktedj6x7yd" path="res://universe.tscn" id="2_xmtj1"]
-[ext_resource type="Script" path="res://fps.gd" id="3_8mst5"]
-[ext_resource type="Script" path="res://ColorRect.gd" id="4_3mt18"]
 
 [node name="god" type="Node"]
 script = ExtResource("1_nvt8k")
@@ -15,7 +13,6 @@ offset_left = 32.0
 offset_top = 16.0
 offset_right = 72.0
 offset_bottom = 39.0
-script = ExtResource("3_8mst5")
 
 [node name="Instructions" type="Label" parent="."]
 z_index = 1
@@ -26,12 +23,11 @@ offset_bottom = 98.0
 text = "Space to spawn new universe
 "
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 z_index = -1
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.0745098, 0.0745098, 0.0745098, 1)
-script = ExtResource("4_3mt18")
 
 [node name="InputG" type="LineEdit" parent="."]
 offset_left = 52.0

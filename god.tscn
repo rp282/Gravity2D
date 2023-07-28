@@ -43,24 +43,28 @@ color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 script = ExtResource("4_3mt18")
 
 [node name="InputLargeBodies" type="LineEdit" parent="."]
+z_index = 1
 offset_left = 144.0
 offset_top = 104.0
 offset_right = 211.063
 offset_bottom = 135.0
 
 [node name="Label" type="Label" parent="InputLargeBodies"]
+z_index = 1
 offset_left = -112.0
 offset_right = -13.0
 offset_bottom = 26.0
 text = "Large Bodies"
 
 [node name="InputSmallBodies" type="LineEdit" parent="."]
+z_index = 1
 offset_left = 144.0
 offset_top = 136.0
 offset_right = 211.063
 offset_bottom = 167.0
 
 [node name="Label" type="Label" parent="InputSmallBodies"]
+z_index = 1
 offset_left = -112.0
 offset_right = -13.0
 offset_bottom = 26.0

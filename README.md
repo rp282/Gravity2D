@@ -1,1 +1,1 @@
-Gravity simulation of n-bodies with elastic collisions.
+Gravity simulation of n-bodies with elastic collisions and body osmosis.

@@ -11,12 +11,28 @@ var joinable : bool
 var velocity : Vector2
 var universe : Universe
 
+func _ready():
+    add_to_group("bodies")
+
 func _process(delta):
-    if position.x + radius + velocity.x > universe.x_max || position.x - radius + velocity.x < 0:
+    var net_force = Vector2.ZERO
+    for other_body in get_tree().get_nodes_in_group("bodies"):
+        if other_body == self:
+            continue
+        var direction = position.direction_to(other_body.position)
+        var force_magnitude = universe.gravity * mass * other_body.mass / position.distance_squared_to(other_body.position)
+        net_force += direction * force_magnitude
+    
+    var acceleration = net_force / mass
+    velocity += acceleration * delta
+    
+    var new_position = position + (velocity * delta)
+    ## Bounce off walls
+    if new_position.x + radius > universe.x_max || new_position.x - radius < 0:
         velocity.x = -velocity.x
-    if position.y + radius + velocity.y > universe.y_max || position.y - radius + velocity.y < 0:
+    if new_position.y + radius > universe.y_max || new_position.y - radius < 0:
         velocity.y = -velocity.y
-    position += velocity
+    position = new_position
     queue_redraw()
 
 var glow = 1
@@ -34,9 +50,17 @@ func _draw():
 
 
 func initialize(u: Universe, m: float, pos: Vector2, c: Color, v: Vector2 = Vector2(0, 0)):
-    mass = m
+    mass = m * 100
     radius = m / 2
     position = pos
+    universe = u
+    if position.x + radius > universe.x_max:
+        position.x -= (position.x + radius) - universe.x_max
+    if position.x - radius < universe.x_min:
+        position.x -= (position.x - radius) - universe.x_min
+    if position.y + radius > universe.y_max:
+        position.y -= (position.y + radius) - universe.y_max
+    if position.y - radius < universe.y_min:
+        position.y -= (position.y - radius) - universe.y_min
     color = c
     velocity = v
-    universe = u

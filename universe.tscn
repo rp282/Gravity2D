@@ -6,6 +6,3 @@
 [node name="universe" type="Node2D" groups=["universe"]]
 script = ExtResource("1_85ewv")
 massive_body = ExtResource("2_533q6")
-
-[node name="TileMap" type="TileMap" parent="."]
-format = 2

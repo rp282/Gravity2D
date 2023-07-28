@@ -1,6 +1,7 @@
+Label
+LineEdit
 ColorRect
 TextureRect
-Label
 Node
 TileMap
 Sprite2D

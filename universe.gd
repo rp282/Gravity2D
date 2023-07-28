@@ -21,7 +21,7 @@ func _ready():
     print(gravity)
     ## Large body
     for i in large_bodies:
-        var generated_mass = randf_range(80,140)
+        var generated_mass = randf_range(100,240)
         var random_position = Vector2(randf_range(0, x_max), randf_range(0, y_max))
         var body : MassiveBody = massive_body.instantiate()
         body.initialize(self, generated_mass, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))

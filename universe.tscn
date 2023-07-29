@@ -25,7 +25,6 @@ offset_bottom = 24.0
 color = Color(0, 0.164706, 0.352941, 1)
 
 [node name="COM2" type="ColorRect" parent="."]
-z_index = 3
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0

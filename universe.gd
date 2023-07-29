@@ -5,10 +5,12 @@ extends Node2D
 @export var massive_body : PackedScene
 
 #var massive_objects : Array[MassiveBody] = []
-var x_max = ProjectSettings.get_setting("display/window/size/viewport_width")
-var x_min = 0
+#var x_max = ProjectSettings.get_setting("display/window/size/viewport_width")
+#var x_min = -ProjectSettings.get_setting("display/window/size/viewport_width")
 var y_max = ProjectSettings.get_setting("display/window/size/viewport_height")
-var y_min = 0
+var y_min = -ProjectSettings.get_setting("display/window/size/viewport_height")
+var x_max = y_max
+var x_min = y_min
 
 var small_bodies : int
 var large_bodies : int
@@ -20,28 +22,23 @@ var velocity = Vector2.ZERO
 var total_mass : float = 0
 var center_of_mass : Vector2
 
+var spawn_area_size = 1
+
 func _ready():
-    print(gravity)
     ## Large body
     for i in large_bodies:
-        var random_radius = randf_range(100,240)
-        var random_position = Vector2(randf_range(0, x_max), randf_range(0, y_max))
+        var random_radius = randf_range(50,120)
+        var random_position = Vector2(randf_range(spawn_area_size * x_min, spawn_area_size * x_max), randf_range(spawn_area_size * y_min, spawn_area_size * y_max))
         var body : MassiveBody = massive_body.instantiate()
-#        body.initialize(self, 0, random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
         body.initialize(self, randi() % God.BodyTypes.size(), random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
-#        var body = MassiveBody.new(generated_mass, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
-#        massive_objects.push_back(body)
         total_mass += body.mass
         add_child(body)
     ## Small bodies
     for i in small_bodies:
         var random_radius = randf_range(6,13) 
-        var random_position = Vector2(randf_range(0, x_max), randf_range(0, y_max))
+        var random_position = Vector2(randf_range(spawn_area_size * x_min, spawn_area_size * x_max), randf_range(spawn_area_size * y_min, spawn_area_size * y_max))
         var body : MassiveBody = massive_body.instantiate()
-#        body.initialize(self, 0, random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
         body.initialize(self, randi() % God.BodyTypes.size(), random_radius, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
-#        var body = MassiveBody.new(generated_mass, random_position, Color(randf_range(0,1), randf_range(0,1), randf_range(0,1), 1))
-#        massive_objects.push_back(body)
         total_mass += body.mass
         add_child(body)
 

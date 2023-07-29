@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://xjw0ducla4ap"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_lh6p6"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_lh6p6")
+
+[node name="InputG" type="LineEdit" parent="." groups=["line_edits"]]
+offset_left = 52.0
+offset_top = 41.0
+offset_right = 119.063
+offset_bottom = 72.0
+focus_next = NodePath("../InputLargeBodies")
+focus_previous = NodePath("../InputSmallBodies")
+
+[node name="Label" type="Label" parent="InputG"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 28.0
+text = "G"
+
+[node name="InputLargeBodies" type="LineEdit" parent="." groups=["line_edits"]]
+z_index = 1
+offset_left = 144.0
+offset_top = 80.0
+offset_right = 211.063
+offset_bottom = 111.0
+focus_next = NodePath("../InputSmallBodies")
+focus_previous = NodePath("../InputG")
+
+[node name="Label" type="Label" parent="InputLargeBodies"]
+z_index = 1
+layout_mode = 0
+offset_left = -112.0
+offset_right = -13.0
+offset_bottom = 26.0
+text = "Large Bodies"
+
+[node name="InputSmallBodies" type="LineEdit" parent="." groups=["line_edits"]]
+z_index = 1
+offset_left = 144.0
+offset_top = 120.0
+offset_right = 211.063
+offset_bottom = 151.0
+focus_next = NodePath("../InputG")
+focus_previous = NodePath("../InputLargeBodies")
+
+[node name="Label" type="Label" parent="InputSmallBodies"]
+z_index = 1
+layout_mode = 0
+offset_left = -112.0
+offset_right = -13.0
+offset_bottom = 26.0
+text = "Small Bodies"
+
+[node name="InputSpawnAreaSize" type="LineEdit" parent="." groups=["line_edits"]]
+z_index = 1
+offset_left = 168.0
+offset_top = 160.0
+offset_right = 235.063
+offset_bottom = 191.0
+focus_next = NodePath("../InputG")
+focus_previous = NodePath("../InputLargeBodies")
+
+[node name="Label" type="Label" parent="InputSpawnAreaSize"]
+z_index = 1
+layout_mode = 0
+offset_left = -136.0
+offset_right = -10.0
+offset_bottom = 26.0
+text = "Spawn Area Size"
+
+[node name="Instructions" type="Label" parent="."]
+z_index = 1
+offset_left = 32.0
+offset_top = 200.0
+offset_right = 324.0
+offset_bottom = 278.0
+text = "SPACE to spawn new universe.
+MIDDLE MOUSE hold and drag to pan.
+SCROLL to zoom.
+"
+
+[node name="TotalMass" type="Label" parent="."]
+z_index = 1
+offset_left = 146.0
+offset_top = 16.0
+offset_right = 186.0
+offset_bottom = 39.0
+
+[node name="FPS" type="Label" parent="."]
+z_index = 1
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 39.0
+
+[connection signal="text_changed" from="InputG" to="." method="_on_input_g_text_changed"]
+[connection signal="text_changed" from="InputLargeBodies" to="." method="_on_input_large_bodies_text_changed"]
+[connection signal="text_changed" from="InputSmallBodies" to="." method="_on_input_small_bodies_text_changed"]
+[connection signal="text_changed" from="InputSpawnAreaSize" to="." method="_on_input_spawn_area_size_text_changed"]

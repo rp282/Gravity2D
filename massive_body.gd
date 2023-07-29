@@ -81,7 +81,6 @@ func _draw():
 #            color = color.lightened(glow_factor)
 #        -1:
 #            color = color.darkened(glow_factor)
-            
     draw_circle(Vector2(0,0), radius, color)
     match type:
         God.BodyTypes.elastic:
@@ -96,24 +95,27 @@ func initialize(u: Universe, t: God.BodyTypes,  r: float, pos: Vector2, c: Color
     radius = r
     position = pos
     universe = u
-    if position.x + radius > universe.x_max:
-        position.x -= (position.x + radius) - universe.x_max
-    if position.x - radius < universe.x_min:
-        position.x -= (position.x - radius) - universe.x_min
-    if position.y + radius > universe.y_max:
-        position.y -= (position.y + radius) - universe.y_max
-    if position.y - radius < universe.y_min:
-        position.y -= (position.y - radius) - universe.y_min
+#    if position.x + radius > universe.x_max:
+#        position.x -= (position.x + radius) - universe.x_max
+#    if position.x - radius < universe.x_min:
+#        position.x -= (position.x - radius) - universe.x_min
+#    if position.y + radius > universe.y_max:
+#        position.y -= (position.y + radius) - universe.y_max
+#    if position.y - radius < universe.y_min:
+#        position.y -= (position.y - radius) - universe.y_min
     color = c
     velocity = v
     
 
-func calculate_mass(radius: float):
-    return radius * radius
+func calculate_mass(r: float):
+    return 4.0 / 3.0 * PI * pow(r, 3)
     
-    
-func calculate_radius(mass: float):
-    return sqrt(mass)
+const cube_root : float = 1.0 / 3.0
+func calculate_radius(m: float):
+    var r: float 
+    var r1: float = 0.75 * m * PI
+    r = pow(r1, cube_root)
+    return r
 
     
 func calculate_new_color(body, other_body):

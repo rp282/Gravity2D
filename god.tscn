@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://god.gd" id="1_nvt8k"]
 [ext_resource type="PackedScene" uid="uid://b1sktedj6x7yd" path="res://universe.tscn" id="2_xmtj1"]
-[ext_resource type="PackedScene" uid="uid://xjw0ducla4ap" path="res://hud.tscn" id="3_5lqvi"]
+[ext_resource type="PackedScene" uid="uid://cskic4ouf7qs6" path="res://hud.tscn" id="3_5lqvi"]
 
 [node name="god" type="Camera2D"]
 script = ExtResource("1_nvt8k")

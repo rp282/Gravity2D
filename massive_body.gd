@@ -55,7 +55,7 @@ func _process(delta):
                     radius = calculate_radius(mass)
                     other_body.free()
                 else:
-                    other_body.velocity += (velocity * mass + other_body.velocity * other_body.mass) / (mass + other_body.mass)
+                    other_body.velocity = (velocity * mass + other_body.velocity * other_body.mass) / (mass + other_body.mass)
                     color = calculate_new_color(self, other_body)
                     other_body.mass += mass
                     other_body.radius = calculate_radius(other_body.mass)
